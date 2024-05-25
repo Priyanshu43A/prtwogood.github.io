@@ -1,0 +1,715 @@
+@font-face {
+    font-family: 'futura';
+    src: url('./fonts/Futura-Bold.ttf');
+    
+}
+
+@font-face {
+    font-family: 'helvatica';
+    src: url('./fonts/helvatica.ttf');
+    
+}
+
+
+    
+
+*::selection{
+    background-color: #000;
+    color: #fff;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+
+.page1, .page2, .page3{
+    min-height: 100vh;
+    width: 100%;
+    padding: 25px;
+   padding-top: 15%;
+}
+
+.page1 h1{
+    display: inline-block;
+    font-size:  14.5rem;
+    font-family: 'futura';
+    text-transform: uppercase;
+    line-height:  26vh;
+    letter-spacing: -10px;
+    position: relative;
+}
+
+
+.headingcont{
+    overflow: hidden;
+    display: inline-block;
+}
+
+.videocont{
+    display: flex;
+    justify-content: center;
+    margin-top: 1vh;
+    overflow: hidden;
+    position: relative;
+}
+
+video{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+}
+
+
+.cursor {
+    opacity: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #000;
+    position: absolute; /* Changed to absolute for correct alignment */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    transform: translate(-50%, -50%); /* Center the cursor */
+    pointer-events: none; /* Prevent it from interfering with events */
+    z-index: 1000; /* Ensure it is on top */
+}
+
+.page2{
+    padding-top: 0%;
+}
+
+.page3{
+    padding-top: 0%;
+}
+
+.page2 .line{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #000;
+    font-family: sans-serif;    
+}
+
+.products{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    margin-top: 3vh;
+   flex-wrap: wrap;
+   
+    justify-content: space-between;
+}
+
+.product{
+     
+    max-width: 32%;
+    min-width: 32%;
+
+    max-height: 92%;
+    
+    align-items: center;
+    position: relative;
+    overflow: hidden; 
+}
+
+.product img{
+    width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    
+}
+
+.popup{
+    position: absolute;
+    z-index: 12;
+    top: 50%;
+    left: 20%;
+    min-height: 4%;
+     
+
+    max-width: 70%;
+    min-width: 70%;
+   
+
+    background-image: none;
+    background: #f5e0cf;
+    padding: 16px 32px;
+    font-family: 'helvatica';
+    font-size: 0.8rem;
+    border-radius: 36px;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.popupNav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.popupNav *{
+    cursor: pointer;
+}
+
+.popupNav *:hover{
+    font-weight: bold;
+}
+
+.popupProduct *{
+    cursor: pointer;
+}
+
+.popupProduct{
+    display: none;
+    height: 90%;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    
+    margin-top: 36px;
+     
+       
+}
+
+.popupProduct div{
+    flex: 1;
+   min-height: inherit;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: space-between;
+    text-align: center;
+    gap: 20px;
+}
+
+
+
+.popupProduct img{
+    max-height: 100px;
+    min-height: 100px;
+}
+
+
+.about{
+    display: flex;
+}
+
+#heading{
+    flex: 2;
+}
+
+#heading h1{
+    width: 80%;
+    font-size: 3.5rem;
+    font-family: 'futura';
+    line-height: 8vh;
+}
+
+
+#paras{
+     flex: 1;
+    font-family: 'helvatica';
+    display: flex;
+    flex-direction: column;
+     
+    justify-content: space-between;
+    gap: 6vh;
+}
+
+#paras p{
+    width: 70%;
+    font-size: 1rem;
+    line-height: 3.5vh;
+}
+
+#paras button{
+    border: none;
+    overflow: hidden;
+       cursor: pointer;
+    font-size: 0.7rem;
+    word-spacing: 6px;
+    background: transparent;
+    align-self: flex-start;
+    /* border-bottom: 1px solid black; */
+}
+
+
+ 
+#paras button::after{
+    content: "";
+    margin-top: 6px;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #000;
+    transition: all 0.3s ease;
+}
+
+@keyframes moveRightThenLeft {
+    0% {
+        transform: translateX(0%);
+    }
+    50% {
+        transform: translateX(100%);
+        opacity: 0.5;
+        
+    }
+    51%{
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+#paras button.animate::after {
+     
+
+    animation: moveRightThenLeft 1s ease forwards;
+}
+
+.bigproducts{
+    margin-top: 20vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 30vh;
+     
+}
+
+.bigproduct{
+     gap: 10px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.bigproduct img{
+    width: 60%;
+    cursor: pointer;
+
+    row-gap: 20vh;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: 13;
+
+}
+
+.bigcursor{
+    position: absolute;
+    z-index: 12;
+    opacity: 0;
+    top: 50%;
+    left: 20%;
+    min-height: 250px;
+    min-width: 250px;
+    border-radius: 50%;
+    background-color: rgba(128, 128, 128, 0.233);
+}
+
+
+.page4{
+    margin-top: 20%;
+    padding: 25px;
+}
+
+ .page4line{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #000;
+    font-family: sans-serif;
+    font-size: 0.7rem;
+    padding-bottom: 5px;
+ }
+
+
+ .reviewscont{
+    margin-top: 5vh;
+ }
+
+ .users{
+    display: flex;
+    gap: 8vw;
+    overflow: hidden;
+    padding-left: 4vw;
+ }
+
+ .user{
+    min-width: 15%;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+ }
+
+ .user i{
+    font-size: 1.3rem;
+    cursor: pointer;
+ }
+
+
+ .user p{
+    font-size: 1.5rem;
+    font-family: "helvatica";
+ }
+
+ .message{
+    margin-top: 15vh;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'futura';
+ }
+
+ .message h1{
+    width: 80%;
+    line-height: 10vh;
+    text-transform: uppercase;
+ }
+
+ .writemsg{
+    margin: 10vh 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4vh;
+ }
+
+.writemsg button{
+    border: none;
+    font-size: 0.8rem;
+    background: #000;
+    width: 25%;
+    height: 8vh;
+    cursor: pointer;
+    border-radius: 60px;
+    color: #fff;
+    text-align: center;
+    font-family: 'futura';
+}
+
+.writemsg p{
+    font-size: 1rem;
+    font-family: "helvatica";
+    width: 25%;
+    text-align: center;
+}
+
+.writemsg button:hover{
+    color: #aaa8a8;
+}
+
+
+nav{
+    padding: 25px;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    top: 0;
+    z-index: 9999;
+}
+
+#logo{
+    font-size: 2rem;
+    font-family: 'futura';
+    line-height: 4vh;
+}
+
+.navitems{
+    width: 30%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-right: 15%;
+}
+
+.navitems a{
+    font-size: 0.8rem;
+    font-family: 'helvatica';
+    text-decoration: none;
+    color: #000;
+}
+
+#opts{
+    position: fixed;
+    top: 0.25%;
+    width: 10%;
+    background-color: #fff;
+    padding: 10px;
+    
+    border-radius: 24px;
+    right: 55px;
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+#opts i{
+    font-size: 1.2rem;
+    cursor: pointer;
+   
+}
+
+
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 768px) {
+    /* Your CSS rules for mobile devices go here */
+   
+
+.page1{
+    min-height: auto;
+    margin-bottom: 10vh;
+}
+
+    .navitems {
+        display: none; /* Hide nav items on mobile */
+    }
+
+    #opts {
+        /* Adjust position if needed */
+        position: absolute;
+        right: 5%;
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #opts i {
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    /* Additional adjustments for mobile */
+    nav {
+        padding: 5px;
+    }
+
+    #logo {
+        font-size: 1.5rem; /* Adjust logo size for mobile */
+        line-height: 3vh;
+    }
+   
+
+    .headings{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 20vh;
+    }
+
+    .headingcont{
+        margin-left: 0% !important;
+    }
+
+    .page1 h1{
+
+    display: inline-block;
+    font-size:  4.5rem;
+    font-family: 'futura';
+    text-transform: uppercase;
+    line-height:  8vh;
+    text-align: left;
+    
+    letter-spacing: 0px;
+    position: relative;
+
+    }
+
+    /* Additional mobile-specific styles */
+
+    .products{
+        width: 100%;
+        height: auto;
+        display: flex;
+        margin-top: 3vh;
+       flex-wrap: wrap;
+       gap: 5vh;
+        justify-content: space-between;
+    }
+
+    .product{
+        min-width: 100%;
+    }
+    
+    .about{
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 5vh;
+    }
+
+    .about p{
+        min-width: 100%;
+    }
+
+    #heading{
+        flex: 1;
+        min-width: 100%;
+    }
+    
+    #heading h1{
+        width: 100%;
+        font-size: 3rem;
+        font-family: 'futura';
+        line-height: 6vh;
+    }
+
+
+    .bigproducts{
+    margin-top: 10vh;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 10vh;
+     
+}
+
+.bigproduct{
+     gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.message{
+    margin-top: 5vh;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'futura';
+ }
+
+ .message h1{
+    width: 100%;
+    line-height: 5vh;
+    font-size: 2.8rem;
+    text-transform: uppercase;
+ }
+
+ .writemsg{
+    margin: 5vh 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4vh;
+ }
+
+.writemsg button{
+    border: none;
+    font-size: 0.8rem;
+    background: #000;
+    width: 100%;
+    height: 8vh;
+    cursor: pointer;
+    border-radius: 60px;
+    color: #fff;
+    text-align: center;
+    font-family: 'futura';
+}
+
+.writemsg p{
+    font-size: 1rem;
+    font-family: "helvatica";
+    width: 100%;
+    text-align: center;
+}
+
+.page4{
+    margin-top: 15vh;
+}
+.reviewscont{
+    margin-top: 2vh;
+ }
+
+ .users{
+    display: flex;
+    gap: 15vw;
+    overflow: hidden;
+    padding-left: 0vw;
+ }
+
+ .user{
+    min-width: 15%;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+ }
+
+ .user i{
+    font-size: 1rem;
+    cursor: pointer;
+ }
+
+
+ .user p{
+    font-size: 1rem;
+    font-family: "helvatica";
+ }
+ #fullnav{
+    display: flex;
+    justify-content: end;
+    padding-right: 5vw;
+    min-height: 100vh;
+}
+
+#fullnav > div h1{
+    font-size: 3rem !important;
+    line-height: normal;
+    letter-spacing: normal;
+}
+
+
+}
+
+#fullnav{
+    display: none;
+    justify-content: end;
+    padding-right: 5vw;
+}
+
+#fullnav > div h1{
+    font-size: 5rem;
+    line-height: normal;
+    letter-spacing: normal;
+}
+
+.showNav{
+    display: flex !important;
+}
